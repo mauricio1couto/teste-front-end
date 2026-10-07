@@ -1,0 +1,20 @@
+@use '@/styles' as *;
+
+.skipLink {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: $z-modal + 1;
+  padding: 8px 16px;
+  background-color: $color-dark;
+  color: $color-white;
+  font-size: 14px;
+  font-weight: $fw-semibold;
+  border-radius: $radius-sm;
+  transform: translateY(-200%);
+  transition: transform $transition-fast;
+
+  &:focus {
+    transform: none;
+  }
+}

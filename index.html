@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Econverse | Ofertas em tecnologia, moda, supermercado e mais</title>
+    <meta
+      name="description"
+      content="Compre com 100% de segurança na Econverse: até 50% off, frete grátis acima de R$ 200 e parcelamento sem juros em tecnologia, moda, supermercado, bebidas e muito mais."
+    />
+    <link rel="canonical" href="%VITE_SITE_URL%/" />
+    <meta name="theme-color" content="#271c47" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Econverse" />
+    <meta property="og:title" content="Econverse | Venha conhecer nossas promoções" />
+    <meta
+      property="og:description"
+      content="Até 50% off nos produtos, frete grátis acima de R$ 200 e parcelamento sem juros."
+    />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
+    <meta property="og:image" content="%VITE_SITE_URL%/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Letreiros neon de Black Friday na vitrine da Econverse"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Econverse | Venha conhecer nossas promoções" />
+    <meta
+      name="twitter:description"
+      content="Até 50% off nos produtos, frete grátis acima de R$ 200 e parcelamento sem juros."
+    />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/og-image.jpg" />
+
+    <!-- Imagem do hero = LCP -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/images/hero.webp"
+      imagesrcset="/images/hero.webp 1440w, /images/hero@2x.webp 2880w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+
+    <!-- Fontes: Poppins (base), Outfit (newsletter) e Work Sans (rodapé e modal) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Carregamento assíncrono: o CSS das fontes não bloqueia a renderização -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@600&family=Poppins:wght@300;400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@600&family=Poppins:wght@300;400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap"
+      />
+    </noscript>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Econverse",
+        "url": "%VITE_SITE_URL%/",
+        "logo": "%VITE_SITE_URL%/favicon.svg",
+        "sameAs": [
+          "https://www.instagram.com/",
+          "https://www.facebook.com/",
+          "https://www.linkedin.com/"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <noscript>Ative o JavaScript para navegar pela loja Econverse.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

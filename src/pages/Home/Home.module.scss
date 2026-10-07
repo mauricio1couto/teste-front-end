@@ -1,0 +1,19 @@
+@use '@/styles' as *;
+
+.home {
+  flex: 1;
+}
+
+// Todas as seções abaixo das categorias ficam a 90px umas das outras no Figma
+// (inclusive a newsletter em relação à última vitrine).
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: $section-gap;
+  padding-top: $section-gap;
+
+  @include bp-down(sm) {
+    gap: 56px;
+    padding-top: 56px;
+  }
+}
