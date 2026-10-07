@@ -1,0 +1,37 @@
+@use '@/styles' as *;
+
+.actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+
+  @include bp-down(md) {
+    gap: 20px;
+  }
+
+  @include bp-down(xs) {
+    gap: 12px;
+  }
+}
+
+.link {
+  display: flex;
+  border-radius: $radius-sm;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.icon {
+  @include bp-down(xs) {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+// No Figma o ícone de pedidos está espelhado (rotate 180 + flip vertical).
+.mirrored {
+  transform: scaleX(-1);
+}

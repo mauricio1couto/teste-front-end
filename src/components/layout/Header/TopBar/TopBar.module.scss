@@ -1,0 +1,48 @@
+@use '@/styles' as *;
+
+.topBar {
+  height: 32px;
+  border-bottom: 1px solid $color-line-header;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  gap: 119px;
+  padding-top: 6px;
+
+  @include bp-down(md) {
+    gap: 48px;
+  }
+
+  @include bp-down(sm) {
+    @include horizontal-scroll;
+    justify-content: flex-start;
+    gap: 32px;
+  }
+}
+
+.item {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.text {
+  margin-top: 1px;
+  color: $color-text-muted;
+  font-size: 12px;
+  font-weight: $fw-medium;
+  line-height: $lh-normal;
+  white-space: nowrap;
+}
+
+.highlight {
+  color: $color-accent;
+  font-weight: $fw-semibold;
+}

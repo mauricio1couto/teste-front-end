@@ -1,0 +1,59 @@
+@use '@/styles' as *;
+
+// Header do Figma: 1280 × 144 (top bar 32 + main 72 + nav 40).
+.header {
+  @include container;
+  position: relative;
+  z-index: 2; // sombra do menu por cima do hero
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 630px 1fr;
+  grid-template-areas: 'logo search actions';
+  align-items: center;
+  height: 72px;
+
+  @include bp-down(lg) {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    column-gap: 32px;
+  }
+
+  @include bp-down(sm) {
+    grid-template-columns: auto auto;
+    grid-template-areas:
+      'logo actions'
+      'search search';
+    row-gap: 12px;
+    height: auto;
+    padding-block: 12px;
+  }
+}
+
+.logo {
+  grid-area: logo;
+  justify-self: start;
+
+  @include bp-down(xs) {
+    img {
+      width: 112px;
+      height: auto;
+    }
+  }
+}
+
+.search {
+  grid-area: search;
+}
+
+.actions {
+  grid-area: actions;
+  justify-self: end;
+  align-self: start;
+  margin-top: 20px; // ícones alinhados pelo topo em y=52 no Figma
+
+  @include bp-down(sm) {
+    align-self: center;
+    margin-top: 0;
+  }
+}

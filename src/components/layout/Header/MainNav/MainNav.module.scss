@@ -1,0 +1,61 @@
+@use '@/styles' as *;
+
+.nav {
+  height: 40px;
+  background-color: $color-white;
+  border-top: 1px solid $color-line-header;
+  box-shadow: $shadow-nav;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  gap: 91px;
+  height: 100%;
+  padding-top: 9px; // texto em y=10 do topo da faixa (já descontada a borda de 1px)
+
+  @include bp-down(lg) {
+    gap: 48px;
+  }
+
+  @include bp-down(md) {
+    @include horizontal-scroll;
+    justify-content: flex-start;
+    gap: 32px;
+    padding-inline: 16px;
+  }
+}
+
+.item {
+  flex-shrink: 0;
+}
+
+.link {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: $color-text-muted;
+  font-size: 12px;
+  font-weight: $fw-semibold;
+  line-height: $lh-normal;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+// ASSINATURA: coroa de 20px alinhada pelo topo com o texto (1px acima dos demais)
+.withIcon {
+  margin-top: -1px;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.highlight {
+  color: $color-accent;
+}
