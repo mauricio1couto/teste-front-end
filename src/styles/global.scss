@@ -1,0 +1,19 @@
+@use 'reset';
+@use 'typography';
+@use 'variables' as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+// Trava o scroll da página enquanto o modal está aberto (useLockBodyScroll).
+body.is-scroll-locked {
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: clip;
+}

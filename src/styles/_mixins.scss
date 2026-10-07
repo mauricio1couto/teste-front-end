@@ -1,0 +1,113 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+/// Media query "desktop-first": aplica abaixo do breakpoint informado.
+@mixin bp-down($name) {
+  @media (max-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+/// Container centralizado com a largura do Figma (1280px).
+@mixin container($width: $container-width) {
+  width: min(#{$width}, calc(100% - #{$gutter * 2}));
+  margin-inline: auto;
+}
+
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
+
+/// Reset de botão para botões apenas com ícone ou texto.
+@mixin button-reset {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+/// Base comum de todos os botões do layout.
+@mixin button-base {
+  @include flex-center;
+  @include button-reset;
+  font-family: $font-primary;
+  line-height: $lh-normal;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    filter $transition-fast,
+    transform $transition-fast;
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.95);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+/// Título de seção (Produtos relacionados, Navegue por marcas).
+@mixin section-title {
+  margin: 0;
+  color: $color-primary;
+  font-family: $font-primary;
+  font-size: 30px;
+  font-weight: $fw-bold;
+  line-height: $lh-normal;
+  text-align: center;
+
+  @include bp-down(sm) {
+    font-size: 24px;
+  }
+}
+
+/// Limita o texto a N linhas com reticências.
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  line-clamp: $lines;
+}
+
+/// Lista horizontal com scroll (categorias e marcas no mobile).
+@mixin horizontal-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

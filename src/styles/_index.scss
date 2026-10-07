@@ -1,0 +1,3 @@
+// Ponto único de import para os CSS Modules: @use '@/styles' as *;
+@forward 'variables';
+@forward 'mixins';

@@ -1,0 +1,95 @@
+// Design tokens extraídos do Figma (Dev Mode). Frame de referência: 1440px.
+@use 'sass:map';
+
+// ---------- Cores ----------
+$color-primary: #3442b5; // "Azul": títulos de seção, aba ativa, COMPRAR do card, frete grátis
+$color-accent: #3019b2; // violeta: destaques da top bar, OFERTAS DO DIA, categoria ativa
+$color-category-icon-active: #3c28bc; // traço do ícone da categoria ativa
+$color-secondary: #f7ca11; // "Amarelo": logo, 50% Off, botões amarelos
+$color-dark: #271c47; // "Roxo/Violeta": texto do logo, newsletter, texto dos botões amarelos
+$color-white: #fff;
+$color-black: #000;
+
+$color-text: #3f3f40; // "Preto/Cinza Escuro": textos de card, rodapé
+$color-text-strong: #3b3b3b; // abas inativas
+$color-text-category: #4e4e4e; // legendas de categoria inativas
+$color-text-muted: #9f9f9f; // "Cinza Médio": top bar, menu, busca, descrição do modal
+$color-text-old-price: #808080;
+$color-text-placeholder: #676767;
+$color-text-footer: rgba(34, 34, 34, 0.71);
+$color-text-button-dark: #161615; // INSCREVER
+$color-icon-close: #707070;
+
+$color-border: #bdbdbd; // abas
+$color-border-input: #e7e7e7;
+$color-border-qty: #d9d9d9;
+$color-line-title: #dedede; // linhas laterais do SectionTitle
+$color-line-header: #f0f0f0; // divisórias do header
+$color-line-footer: rgba(40, 40, 40, 0.18);
+$color-checkbox-bg: #f6f6f6;
+$color-checkbox-border: #8c342b;
+
+$color-bg-search: #f6f5f2;
+$color-bg-soft: #f4f4f4; // categorias inativas e rodapé
+$color-bg-soft-hover: #ededed;
+$color-overlay: rgba(0, 0, 0, 0.54); // overlay do modal
+$color-skeleton: #ececec;
+$color-error: #ff8f8f;
+$color-success: #8ee6a8;
+$color-focus: #3442b5;
+
+// ---------- Tipografia ----------
+$font-primary: 'Poppins', system-ui, sans-serif;
+$font-display: 'Outfit', 'Poppins', system-ui, sans-serif; // título da newsletter
+$font-secondary: 'Work Sans', system-ui, sans-serif; // links do rodapé, descrição/link do modal
+
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+$lh-normal: 1.5; // "leading: normal" da Poppins
+
+// ---------- Layout ----------
+$frame-width: 1440px;
+$container-width: 1280px;
+$gutter: 16px; // margem lateral mínima em telas menores
+$section-gap: 90px; // distância vertical entre as seções no Figma
+
+// ---------- Raios ----------
+$radius-xs: 1px;
+$radius-sm: 4px;
+$radius-md: 5px;
+$radius-lg: 6px;
+$radius-xl: 8px;
+$radius-card: 10px;
+$radius-banner: 20px;
+
+// ---------- Sombras ----------
+$shadow-nav: 0 8px 16px rgba(57, 48, 19, 0.12);
+$shadow-card: 0 3px 19px rgba(0, 0, 0, 0.22);
+$shadow-category: 0 4px 11px rgba(0, 0, 0, 0.13);
+$shadow-category-active: 0 2px 9px rgba(0, 0, 0, 0.22);
+$shadow-arrow: 0 4px 4px rgba(0, 0, 0, 0.25);
+$shadow-brand: 0 7px 10px rgba(0, 0, 0, 0.13);
+
+// ---------- Movimento ----------
+$transition-fast: 150ms ease;
+$transition-base: 250ms ease;
+
+// ---------- Camadas ----------
+$z-modal: 1000;
+
+// ---------- Breakpoints (max-width) ----------
+$breakpoints: (
+  xl: 1439.98px,
+  lg: 1199.98px,
+  md: 991.98px,
+  sm: 767.98px,
+  xs: 479.98px,
+);
+
+@function bp($name) {
+  @return map.get($breakpoints, $name);
+}
