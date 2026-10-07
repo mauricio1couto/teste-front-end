@@ -1,0 +1,118 @@
+@use '@/styles' as *;
+
+// Frame "vitrine" do Figma: 1364px com setas nas bordas e 4 cards de 304px (gap 18) no centro.
+$frame-width: 1364px;
+$arrow-size: 32px;
+$arrow-space: 47px; // seta (32) + 15px até o primeiro card
+$gap: 18px;
+// Folga para a sombra dos cards (0 3px 19px) não ser cortada pelo overflow.
+// Horizontal = metade do gap: corta só a parte mais fraca da sombra e esconde a do card seguinte.
+$shadow-x: 9px; // metade do gap
+$shadow-top: 20px;
+$shadow-bottom: 30px;
+
+.carousel {
+  --per-view: 4;
+  position: relative;
+  display: flow-root; // impede que as margens negativas do viewport colapsem para fora
+  width: min(#{$frame-width}, 100%);
+  margin-inline: auto;
+  padding-inline: $arrow-space;
+
+  @include bp-down(lg) {
+    --per-view: 3;
+  }
+
+  @include bp-down(md) {
+    --per-view: 2;
+  }
+
+  @include bp-down(sm) {
+    padding-inline: $gutter + 24px;
+  }
+
+  @include bp-down(xs) {
+    --per-view: 1;
+  }
+}
+
+.viewport {
+  display: flex;
+  gap: $gap;
+  padding: $shadow-top $shadow-x $shadow-bottom;
+  margin: (-$shadow-top) (-$shadow-x) (-$shadow-bottom);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: $shadow-x;
+  scrollbar-width: none;
+  // Esmaece a sombra nas bordas laterais em vez de cortá-la seco
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 $shadow-x,
+    #000 calc(100% - #{$shadow-x}),
+    transparent
+  );
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.slide {
+  flex: 0 0 calc((100% - #{$gap} * (var(--per-view) - 1)) / var(--per-view));
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+// Círculo branco 32px com sombra; no Figma o topo fica 246px abaixo do topo dos cards (500px)
+.arrow {
+  @include button-reset;
+  @include flex-center;
+  position: absolute;
+  top: calc(50% - 4px);
+  z-index: 1;
+  width: $arrow-size;
+  height: $arrow-size;
+  background-color: $color-white;
+  border-radius: 50%;
+  box-shadow: $shadow-arrow;
+  transition:
+    opacity $transition-fast,
+    transform $transition-fast;
+
+  &:hover:not(:disabled) {
+    transform: scale(1.08);
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  @include bp-down(sm) {
+    top: calc(50% - #{$arrow-size * 0.5});
+  }
+}
+
+.prev {
+  left: 0;
+
+  @include bp-down(sm) {
+    left: $gutter * 0.5;
+  }
+}
+
+.next {
+  right: 0;
+
+  @include bp-down(sm) {
+    right: $gutter * 0.5;
+  }
+}
+
+// Mesmo chevron do Figma, espelhado para a seta da direita
+.flipped {
+  transform: scaleX(-1);
+}

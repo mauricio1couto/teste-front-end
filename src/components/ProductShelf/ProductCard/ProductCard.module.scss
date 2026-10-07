@@ -1,0 +1,108 @@
+@use '@/styles' as *;
+
+// Card 304 × 500 do Figma. Posições verticais (topo do card):
+// imagem 32 · descrição 269 · preço "de" 327 · preço 353 · parcelas 385 · frete 410 · botão 440
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  padding: 32px 16px 16px 12px;
+  background-color: $color-white;
+  border-radius: $radius-card;
+  box-shadow: $shadow-card;
+}
+
+.media {
+  position: relative;
+}
+
+.image {
+  width: auto;
+  max-width: 100%;
+  height: 228px;
+  margin-inline: auto;
+  object-fit: contain;
+}
+
+.name {
+  margin-top: 9px;
+  font: inherit;
+}
+
+// Botão do nome: o ::after cobre foto + nome, deixando tudo clicável.
+.nameButton {
+  @include button-reset;
+  @include line-clamp(2);
+  width: 100%;
+  height: 45px; // sempre 2 linhas reservadas (alinhamento entre cards)
+  color: $color-text;
+  font-size: 15px;
+  font-weight: $fw-light;
+  line-height: $lh-normal;
+  text-align: left;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: $radius-sm;
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    &::after {
+      outline: 2px solid $color-focus;
+      outline-offset: 4px;
+    }
+  }
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.prices {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  margin-top: 13px;
+}
+
+.listPrice {
+  color: $color-text-old-price;
+  font-size: 16px;
+  font-weight: $fw-regular;
+  line-height: $lh-normal;
+  text-decoration: line-through;
+  text-decoration-skip-ink: none;
+}
+
+.price {
+  color: $color-text;
+  font-size: 20px;
+  font-weight: $fw-bold;
+  line-height: $lh-normal;
+}
+
+.installment {
+  margin-top: 2px;
+  color: $color-text;
+  font-size: 12px;
+  line-height: $lh-normal;
+}
+
+.shipping {
+  margin-top: 7px;
+  color: $color-primary;
+  font-size: 12px;
+  line-height: $lh-normal;
+}
+
+// COMPRAR do card: azul / branco, 44px, raio 4
+.buy {
+  height: 44px;
+  margin-top: auto;
+  font-size: 14px;
+}

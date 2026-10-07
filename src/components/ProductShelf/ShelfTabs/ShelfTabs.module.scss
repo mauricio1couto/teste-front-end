@@ -1,0 +1,65 @@
+@use '@/styles' as *;
+
+.wrapper {
+  @include container;
+
+  @include bp-down(md) {
+    @include horizontal-scroll;
+    width: 100%;
+    padding-inline: $gutter;
+  }
+}
+
+.tablist {
+  display: flex;
+
+  @include bp-down(md) {
+    min-width: max-content;
+  }
+}
+
+// 6 células iguais; margin -1px evita borda dupla entre elas
+.tab {
+  @include button-reset;
+  @include flex-center;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 40px;
+  padding: 12px 8px;
+  margin-right: -1px;
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  color: $color-text-strong;
+  font-size: 16px;
+  font-weight: $fw-regular;
+  line-height: 16px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color $transition-fast;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &:focus-visible {
+    position: relative;
+    z-index: 1;
+    outline-offset: -3px;
+  }
+
+  @include bp-down(md) {
+    flex: 0 0 auto;
+    min-width: 140px;
+    font-size: 14px;
+  }
+}
+
+// Ativa: só o texto muda (azul + bold), o fundo continua branco
+.active {
+  color: $color-primary;
+  font-weight: $fw-bold;
+}

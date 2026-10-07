@@ -1,0 +1,55 @@
+@use '@/styles' as *;
+
+.shelf {
+  width: 100%;
+}
+
+// Abas 4px abaixo do título (45px de altura de linha)
+.tabs {
+  margin-top: 4px;
+}
+
+// "Ver todos" no lugar das abas
+.viewAll {
+  display: block;
+  width: fit-content;
+  margin: 4px auto 0;
+  color: $color-text;
+  font-size: 15px;
+  font-weight: $fw-bold;
+  line-height: $lh-normal;
+  border-radius: $radius-sm;
+
+  &:hover {
+    color: $color-primary;
+    text-decoration: underline;
+  }
+}
+
+// Cards começam 24px abaixo das abas e 25px abaixo do "Ver todos"
+.body {
+  margin-top: 24px;
+}
+
+.viewAll + .body {
+  margin-top: 25px;
+  padding-bottom: 1px; // frame "vitrine" das vitrines 2 e 3 tem 501px no Figma
+}
+
+.feedback {
+  @include container;
+  @include flex-center(column);
+  gap: 16px;
+  min-height: 500px; // mesma altura da vitrine: sem salto de layout
+  color: $color-text;
+  font-size: 16px;
+  text-align: center;
+  background-color: $color-bg-soft;
+  border-radius: $radius-card;
+}
+
+.retry {
+  height: 44px;
+  padding-inline: 32px;
+  font-size: 14px;
+}
