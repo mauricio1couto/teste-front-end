@@ -1,0 +1,60 @@
+@use '@/styles' as *;
+
+$circle-size: 211px;
+
+.section {
+  width: 100%;
+}
+
+// Círculos 32px abaixo do título; 5 × 211px com gap 42 (1223px)
+.list {
+  display: flex;
+  justify-content: center;
+  gap: 42px;
+  margin-top: 28px;
+  // espaço para a sombra (0 7px 10px) no modo com scroll (28 + 4 = 32px do título)
+  padding-block: 4px 20px;
+  margin-bottom: -20px;
+  translate: -7px 0; // no Figma a linha fica 7px à esquerda do centro
+
+  @include bp-down(lg) {
+    @include horizontal-scroll;
+    justify-content: flex-start;
+    gap: 24px;
+    translate: none;
+    padding-inline: $gutter;
+    scroll-padding-inline: $gutter;
+  }
+}
+
+.item {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.link {
+  @include flex-center;
+  width: $circle-size;
+  height: $circle-size;
+  background-color: $color-white;
+  border-radius: 50%;
+  box-shadow: $shadow-brand;
+  transition:
+    transform $transition-base,
+    box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.16);
+  }
+
+  @include bp-down(sm) {
+    width: 160px;
+    height: 160px;
+
+    img {
+      width: 96px;
+      height: auto;
+    }
+  }
+}

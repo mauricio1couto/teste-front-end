@@ -1,0 +1,85 @@
+@use '@/styles' as *;
+
+// Banner 634 × 350, raio 20. Conteúdo em x=44: título y=114 · texto y=182 · botão y=262
+.card {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 634 / 350;
+  overflow: hidden;
+  background-color: $color-dark;
+  border-radius: $radius-banner;
+
+  @include bp-down(md) {
+    aspect-ratio: auto;
+    min-height: 320px;
+  }
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// Gradiente inferior: 261px de altura, transparente → preto em 85%, opacidade 0.8
+.overlay {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: -1;
+  height: calc(261 / 350 * 100%);
+  background: linear-gradient(to bottom, rgba($color-black, 0) 0%, $color-black 85.039%);
+  opacity: 0.8;
+
+  @include bp-down(md) {
+    height: 100%;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  padding: 114px 44px 0;
+
+  @include bp-down(lg) {
+    justify-content: flex-end;
+    padding: 32px;
+  }
+}
+
+.title {
+  color: $color-white;
+  font-size: 40px;
+  font-weight: $fw-bold;
+  line-height: $lh-normal;
+
+  @include bp-down(lg) {
+    font-size: 32px;
+  }
+}
+
+.description {
+  max-width: 200px;
+  margin-top: 8px;
+  color: $color-white;
+  font-size: 16px;
+  font-weight: $fw-regular;
+  line-height: $lh-normal;
+}
+
+// CONFIRA: 145 × 48, raio 6, bold 16 com letter-spacing 1.28px
+.cta {
+  width: 145px;
+  height: 48px;
+  margin-top: 32px;
+  border-radius: $radius-lg;
+  font-size: 16px;
+
+  @include bp-down(lg) {
+    margin-top: 24px;
+  }
+}
