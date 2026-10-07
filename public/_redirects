@@ -1,0 +1,2 @@
+# Netlify: proxy do JSON de produtos (o servidor de origem não envia CORS)
+/api/products  https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json  200
