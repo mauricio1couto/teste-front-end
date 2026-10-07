@@ -1,0 +1,31 @@
+@use '@/styles' as *;
+
+// O Button define cores e comportamento. Tamanho, peso e raio de cada botão
+// do layout ficam no módulo de quem o usa (os botões do Figma diferem entre si).
+.button {
+  @include button-base;
+  border-radius: $radius-sm;
+  font-weight: $fw-bold;
+}
+
+.primary {
+  background-color: $color-primary;
+  color: $color-white;
+}
+
+.secondary {
+  background-color: $color-secondary;
+  color: $color-dark;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.tracking {
+  letter-spacing: 0.08em;
+}
+
+.fullWidth {
+  width: 100%;
+}

@@ -1,0 +1,40 @@
+@use '@/styles' as *;
+
+$line-width: 360px;
+$line-gap: 34px;
+$line-offset: 18px; // posição vertical da linha no Figma (não exatamente no centro)
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  @include section-title;
+  flex-shrink: 0;
+}
+
+.withLines {
+  align-items: flex-start;
+  gap: $line-gap;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 0 1 $line-width;
+    height: 1px;
+    margin-top: $line-offset;
+    background-color: $color-line-title;
+  }
+
+  @include bp-down(md) {
+    gap: 16px;
+  }
+
+  @include bp-down(sm) {
+    &::before,
+    &::after {
+      margin-top: 18px;
+    }
+  }
+}
