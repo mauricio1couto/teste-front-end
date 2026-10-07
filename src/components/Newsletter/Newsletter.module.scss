@@ -1,0 +1,209 @@
+@use '@/styles' as *;
+
+// Faixa 1440 × 162. Texto em y=40; formulário em y=45.5
+.newsletter {
+  min-height: 162px;
+  background-color: $color-dark;
+  color: $color-white;
+}
+
+// Texto em x=80.5 (515px de largura) e formulário em x=719.5 → 124px entre eles
+.inner {
+  @include container;
+  display: flex;
+  align-items: flex-start;
+  gap: 124px;
+  padding-block: 40px;
+
+  @include bp-down(xl) {
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  @include bp-down(lg) {
+    flex-direction: column;
+  }
+}
+
+.intro {
+  flex: 0 1 515px;
+
+  @include bp-down(lg) {
+    flex-basis: auto;
+    max-width: 515px;
+  }
+}
+
+.title {
+  max-width: 463px;
+  font-family: $font-display;
+  font-size: 32px;
+  font-weight: $fw-semibold;
+  line-height: 1.2;
+
+  @include bp-down(sm) {
+    font-size: 26px;
+  }
+}
+
+.text {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: $fw-light;
+  line-height: 18px;
+}
+
+.form {
+  margin-top: 5.5px;
+
+  @include bp-down(lg) {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  @include bp-down(sm) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.field {
+  display: block;
+  width: 233px;
+
+  @include bp-down(lg) {
+    flex: 1;
+    width: auto;
+  }
+}
+
+// Inputs 233 × 44: padding 12/24, borda #e7e7e7, raio 8
+.input {
+  width: 100%;
+  height: 44px;
+  padding: 12px 24px;
+  background-color: $color-white;
+  border: 1px solid $color-border-input;
+  border-radius: $radius-xl;
+  color: $color-text;
+  font-size: 14px;
+  line-height: 18px;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-secondary;
+    outline-offset: 2px;
+  }
+}
+
+.invalid {
+  border-color: $color-error;
+  box-shadow: 0 0 0 1px $color-error;
+}
+
+// INSCREVER: padding 15/40, semibold 14 com line-height 12 (42px de altura)
+.submit {
+  height: 42px;
+  padding-inline: 40px;
+  border-radius: $radius-xl;
+  color: $color-text-button-dark;
+  font-size: 14px;
+  font-weight: $fw-semibold;
+  line-height: 12px;
+
+  &:focus-visible {
+    outline-color: $color-white;
+  }
+
+  &[aria-disabled='true'] {
+    cursor: progress;
+    opacity: 0.8;
+  }
+
+  @include bp-down(sm) {
+    height: 44px;
+  }
+}
+
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+// Checkbox 15px: fundo #f6f6f6, borda #8c342b, raio 1
+.checkbox {
+  appearance: none;
+  display: grid;
+  place-content: center;
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  background-color: $color-checkbox-bg;
+  border: 1px solid $color-checkbox-border;
+  border-radius: $radius-xs;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    width: 4px;
+    height: 8px;
+    margin-top: -2px;
+    border: solid $color-dark;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0);
+    transition: transform $transition-fast;
+  }
+
+  &:checked {
+    background-color: $color-secondary;
+    border-color: $color-secondary;
+
+    &::before {
+      transform: rotate(45deg) scale(1);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-secondary;
+    outline-offset: 2px;
+  }
+}
+
+.termsLabel {
+  font-size: 14px;
+  line-height: $lh-normal;
+  cursor: pointer;
+}
+
+.feedback {
+  font-size: 13px;
+  line-height: $lh-normal;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.errors {
+  margin-top: 8px;
+  color: $color-error;
+}
+
+.success {
+  margin-top: 8px;
+  color: $color-success;
+  font-weight: $fw-medium;
+}
