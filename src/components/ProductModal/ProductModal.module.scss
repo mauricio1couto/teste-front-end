@@ -1,0 +1,113 @@
+@use '@/styles' as *;
+
+// Popup 769 × 299, raio 6. Foto 247 × 192 em (56, 56.5); coluna de texto 328px em (390, 63)
+.dialog {
+  width: 769px;
+  min-height: 299px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 247px 328px;
+  column-gap: 87px;
+  align-items: start;
+  padding: 56px 51px 38px 56px; // a coluna de texto (y 63 → 261) define a altura: 299px
+
+  @include bp-down(sm) {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+    padding: 48px 24px 32px;
+  }
+}
+
+.image {
+  width: 247px;
+  height: 192px;
+  margin-top: 0.5px;
+  object-fit: cover; // a foto da API (247 × 228) tem respiro branco; o Figma usa o recorte 247 × 192
+
+  @include bp-down(sm) {
+    justify-self: center;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 7px;
+
+  @include bp-down(sm) {
+    margin-top: 0;
+  }
+}
+
+// Nome: caixa alta, peso leve, letter-spacing 1px
+.name {
+  color: $color-text;
+  font-size: 20px;
+  font-weight: $fw-regular;
+  line-height: 17px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.price {
+  margin-top: 18px;
+  color: $color-text;
+  font-size: 20px;
+  font-weight: $fw-semibold;
+  line-height: 17px;
+  letter-spacing: 1px;
+}
+
+.description {
+  @include line-clamp(2);
+  max-width: 290px;
+  min-height: 30px;
+  margin-top: 32px;
+  color: $color-text-muted;
+  font-family: $font-secondary;
+  font-size: 10px;
+  font-weight: $fw-medium;
+  line-height: 1.505;
+  letter-spacing: 0.5px;
+}
+
+.details {
+  margin-top: 6px;
+  color: $color-primary;
+  font-family: $font-secondary;
+  font-size: 11px;
+  font-weight: $fw-semibold;
+  line-height: 10px;
+  letter-spacing: 0.55px;
+  border-radius: 2px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+
+  @include bp-down(xs) {
+    flex-wrap: wrap;
+  }
+}
+
+// COMPRAR do modal: amarelo / escuro, 188 × 36, raio 6
+.buy {
+  width: 188px;
+  height: 36px;
+  border-radius: $radius-lg;
+  font-size: 14px;
+
+  @include bp-down(xs) {
+    flex: 1;
+  }
+}

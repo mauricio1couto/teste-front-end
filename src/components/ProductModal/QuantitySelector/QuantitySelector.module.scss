@@ -1,0 +1,41 @@
+@use '@/styles' as *;
+
+// Caixa 110 × 36, borda #d9d9d9, raio 4. "−" centrado em x=19.5, "01" em x=47, "+" em x=89.7
+.selector {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 110px;
+  height: 36px;
+  padding-inline: 4px;
+  background-color: $color-white;
+  border: 1px solid $color-border-qty;
+  border-radius: $radius-sm;
+}
+
+.button {
+  @include button-reset;
+  @include flex-center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: $radius-sm;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: $color-bg-soft;
+  }
+}
+
+.value {
+  flex: 1;
+  color: $color-dark;
+  font-size: 16px;
+  font-weight: $fw-medium;
+  line-height: 16px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}

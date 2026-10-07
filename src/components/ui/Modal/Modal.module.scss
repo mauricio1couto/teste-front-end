@@ -1,0 +1,56 @@
+@use '@/styles' as *;
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+.overlay {
+  @include flex-center;
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  padding: $gutter;
+  overflow-y: auto;
+  background-color: $color-overlay;
+  animation: fade-in $transition-base;
+}
+
+.dialog {
+  position: relative;
+  max-width: 100%;
+  max-height: calc(100dvh - #{$gutter * 2});
+  overflow-y: auto;
+  background-color: $color-white;
+  border-radius: $radius-lg;
+  animation: pop-in $transition-base;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// X fino no canto superior direito (centro em x=732.5 / y=23.5 do frame de 769px)
+.close {
+  @include button-reset;
+  @include flex-center;
+  position: absolute;
+  top: 7px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
