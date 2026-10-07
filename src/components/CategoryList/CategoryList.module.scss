@@ -1,0 +1,29 @@
+@use '@/styles' as *;
+
+.section {
+  margin-top: 39px;
+}
+
+// 7 itens distribuídos em 1160px (frame "compre por categoria")
+.list {
+  @include container(1160px);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  // espaço para a sombra dos cards não ser cortada no scroll horizontal
+  padding-block: 4px 12px;
+  margin-block: -4px -12px;
+
+  @include bp-down(lg) {
+    @include horizontal-scroll;
+    width: 100%;
+    padding-inline: $gutter;
+    scroll-padding-inline: $gutter;
+    gap: 24px;
+  }
+}
+
+.item {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}

@@ -1,0 +1,107 @@
+@use '@/styles' as *;
+
+$hero-height: 390px;
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  height: $hero-height;
+  overflow: hidden;
+  background-color: $color-dark;
+
+  @include bp-down(sm) {
+    height: auto;
+    min-height: 360px;
+  }
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+}
+
+// Gradiente do Figma: 966px a partir da esquerda, preto em 85% → transparente, opacidade 0.8
+.overlay {
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: -1;
+  width: 966px;
+  max-width: 100%;
+  background: linear-gradient(to left, rgba($color-black, 0) 0%, $color-black 85.039%);
+  opacity: 0.8;
+
+  @include bp-down(sm) {
+    width: 100%;
+    background: linear-gradient(to left, rgba($color-black, 0.4) 0%, $color-black 85%);
+  }
+}
+
+.content {
+  @include container;
+  padding-top: 78px;
+
+  @include bp-down(sm) {
+    padding-block: 48px;
+  }
+}
+
+// Offsets horizontais do Figma: título em x=81, subtítulo em x=78, botão em x=87
+.title {
+  max-width: 822px;
+  margin-left: 1px;
+  color: $color-white;
+  font-size: 48px;
+  font-weight: $fw-semibold;
+  line-height: 50px;
+
+  @include bp-down(md) {
+    max-width: 560px;
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  @include bp-down(sm) {
+    font-size: 30px;
+    line-height: 36px;
+  }
+}
+
+.subtitle {
+  margin-top: 18px;
+  margin-left: -2px;
+  color: $color-white;
+  font-size: 32px;
+  font-weight: $fw-regular;
+  line-height: $lh-normal;
+
+  @include bp-down(sm) {
+    margin-top: 12px;
+    margin-left: 0;
+    font-size: 22px;
+  }
+}
+
+.discount {
+  color: $color-secondary;
+  font-weight: $fw-bold;
+}
+
+.cta {
+  width: 206px;
+  height: 50px;
+  margin-top: 41px;
+  margin-left: 7px;
+  border-radius: $radius-md;
+  font-size: 16px;
+  font-weight: $fw-semibold;
+
+  @include bp-down(sm) {
+    margin-top: 28px;
+    margin-left: 0;
+  }
+}

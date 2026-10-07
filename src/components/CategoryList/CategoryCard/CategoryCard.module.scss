@@ -1,0 +1,72 @@
+@use '@/styles' as *;
+
+$box-size: 128px;
+$icon-size: 61px;
+
+.card {
+  @include button-reset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px; // legenda em y=150 do topo do card
+  width: $box-size;
+  border-radius: $radius-card;
+
+  &:focus-visible {
+    outline: none;
+
+    .box {
+      outline: 2px solid $color-focus;
+      outline-offset: 3px;
+    }
+  }
+
+  &:hover:not(.active) .box {
+    background-color: $color-bg-soft-hover;
+  }
+}
+
+.box {
+  @include flex-center;
+  width: $box-size;
+  height: $box-size;
+  background-color: $color-bg-soft;
+  border-radius: $radius-card;
+  box-shadow: $shadow-category;
+  transition:
+    background-color $transition-fast,
+    box-shadow $transition-fast;
+}
+
+.icon {
+  width: $icon-size;
+  height: $icon-size;
+  background-color: $color-black;
+  mask: var(--icon) center / contain no-repeat;
+  transition: background-color $transition-fast;
+}
+
+.label {
+  color: $color-text-category;
+  font-size: 14px;
+  font-weight: $fw-medium;
+  line-height: $lh-normal;
+  white-space: nowrap;
+  transition: color $transition-fast;
+}
+
+.active {
+  .box {
+    background-color: $color-white;
+    box-shadow: $shadow-category-active;
+  }
+
+  .icon {
+    background-color: $color-category-icon-active;
+  }
+
+  .label {
+    color: $color-accent;
+    font-weight: $fw-semibold;
+  }
+}
