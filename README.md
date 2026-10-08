@@ -16,7 +16,7 @@ Requisitos: Node 20+ e npm.
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173
+npm run dev        #
 ```
 
 | Script            | O que faz                                         |
@@ -110,6 +110,8 @@ O enunciado proíbe libs de UI, carrossel e modal. Cada uma foi substituída por
   - Respeita `prefers-reduced-motion`.
   - A sombra dos cards fica visível graças a uma folga com margem negativa e máscara nas bordas.
 - **Modal genérico** (`ui/Modal`): `createPortal` no `body`, Esc, clique no overlay, foco preso e devolvido a quem abriu (`useFocusTrap`) e scroll do body travado (`useLockBodyScroll`). O `ProductModal` é montado sobre ele e a quantidade volta a "01" a cada abertura.
+  - **Pop-up de entrada:** quando os produtos carregam, o modal abre sozinho com o produto de maior preço (o iPhone de R$ 1.499,90, como no frame "Popup" do Figma). Depois de fechado, só reabre pelos cards (COMPRAR, foto ou nome).
+  - O foco inicial vai para a própria caixa do diálogo: o leitor de tela anuncia o pop-up e o primeiro Tab leva ao X.
 - **Ícones:** SVGs exportados do Figma, usados como `<img>` com `alt=""` dentro de botões e links que têm `aria-label`.
 
 ### SEO e acessibilidade
@@ -148,7 +150,7 @@ O desktop (1440px) é a referência. Abaixo dele:
 
 ## Testes
 
-`npm test` roda 25 testes:
+`npm test` roda 27 testes:
 
 - `formatCurrency` e `formatQuantity`;
 - adapter e `fetchProducts` (sucesso, `success: false`, HTTP 500, itens inválidos);
@@ -158,7 +160,8 @@ O desktop (1440px) é a referência. Abaixo dele:
   - foco inicial, foco preso com Tab/Shift+Tab e foco devolvido;
   - fechar com Esc, X e overlay;
   - quantidade com mínimo 1, dois dígitos e reinício;
-- `Newsletter`: validação, foco no primeiro erro e envio simulado.
+- `Newsletter`: validação, foco no primeiro erro e envio simulado;
+- `Home`: pop-up de entrada com o produto mais caro, que não reabre depois de fechado.
 
 ## Deploy
 
@@ -173,5 +176,5 @@ O desktop (1440px) é a referência. Abaixo dele:
 - **Textos dos cards e do modal:** o layout usa lorem ipsum; a implementação mostra o nome, a descrição e o preço reais da API. Por isso os cards têm 1 linha de nome (o espaço de 2 linhas continua reservado).
 - **Parcelas e preço riscado:** o layout mostra valores fixos ("R$ 30,90", "2x de R$ 49,95"). Aqui eles são calculados a partir do preço real (ver Adapter).
 - **Foto do produto:** vem da API (247×228). No card ela é centralizada em `contain`; no modal, `cover` reproduz o recorte 247×192 do Figma.
-- **Links** (menu, rodapé, marcas, "Ver todos", CONFIRA) apontam para âncoras (`#...`), porque só existe a Home. COMPRAR do modal apenas fecha o modal (não há carrinho).
+- **Links** (menu, rodapé, marcas, "Ver todos", CONFIRA) apontam para âncoras (`#...`), porque só existe a Home. As exceções são os ícones sociais do rodapé, que abrem os perfis reais da Econverse (Instagram, Facebook e LinkedIn) em nova aba. COMPRAR do modal apenas fecha o modal (não há carrinho).
 - **Deploy:** não publicado (ver acima).
