@@ -33,7 +33,9 @@ export function Modal({
   const dialogRef = useRef<HTMLDivElement>(null);
 
   useLockBodyScroll(open);
-  useFocusTrap(dialogRef, open);
+  // Foco inicial na própria caixa: o leitor de tela anuncia o diálogo e o
+  // navegador não desenha anel de foco no X quando o modal abre sozinho.
+  useFocusTrap(dialogRef, open, dialogRef);
 
   useEffect(() => {
     if (!open) return;

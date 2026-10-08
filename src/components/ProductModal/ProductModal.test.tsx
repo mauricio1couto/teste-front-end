@@ -49,7 +49,7 @@ describe('ProductModal', () => {
   it('move o foco para dentro, trava o scroll e devolve o foco ao fechar com Esc', async () => {
     const { user } = await openModal();
 
-    expect(screen.getByRole('button', { name: 'Fechar detalhes do produto' })).toHaveFocus();
+    expect(screen.getByRole('dialog')).toHaveFocus();
     expect(document.body).toHaveClass('is-scroll-locked');
 
     await user.keyboard('{Escape}');
@@ -78,6 +78,8 @@ describe('ProductModal', () => {
     const { user } = await openModal();
     const close = screen.getByRole('button', { name: 'Fechar detalhes do produto' });
 
+    await user.tab(); // da caixa do diálogo para o X
+    expect(close).toHaveFocus();
     await user.tab(); // link de detalhes
     await user.tab(); // + (o − está desabilitado)
     await user.tab(); // COMPRAR

@@ -47,7 +47,8 @@ export function useFocusTrap(
       }
 
       const current = document.activeElement;
-      const outside = !container.contains(current);
+      // A própria caixa (foco inicial) conta como "fora" para o Shift+Tab não escapar.
+      const outside = current === container || !container.contains(current);
 
       if (event.shiftKey && (current === first || outside)) {
         event.preventDefault();
