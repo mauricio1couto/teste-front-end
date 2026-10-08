@@ -34,7 +34,7 @@ export function Modal({
 
   useLockBodyScroll(open);
   // Foco inicial na própria caixa: o leitor de tela anuncia o diálogo e o
-  // navegador não desenha anel de foco no X quando o modal abre sozinho.
+  // primeiro Tab leva ao X.
   useFocusTrap(dialogRef, open, dialogRef);
 
   useEffect(() => {

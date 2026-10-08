@@ -121,7 +121,6 @@ O enunciado proíbe libs de UI, carrossel e modal. Cada uma foi substituída por
   - Respeita `prefers-reduced-motion`.
   - A sombra dos cards fica visível graças a uma folga com margem negativa e máscara nas bordas.
 - **Modal genérico** (`ui/Modal`): `createPortal` no `body`, Esc, clique no overlay, foco preso e devolvido a quem abriu (`useFocusTrap`) e scroll do body travado (`useLockBodyScroll`). O `ProductModal` é montado sobre ele e a quantidade volta a "01" a cada abertura.
-  - **Pop-up de entrada:** quando os produtos carregam, o modal abre sozinho com o produto de maior preço (o iPhone de R$ 1.499,90, como no frame "Popup" do Figma). Depois de fechado, só reabre pelos cards (COMPRAR, foto ou nome).
   - O foco inicial vai para a própria caixa do diálogo: o leitor de tela anuncia o pop-up e o primeiro Tab leva ao X.
 - **Ícones:** SVGs exportados do Figma, usados como `<img>` com `alt=""` dentro de botões e links que têm `aria-label`.
 
@@ -172,7 +171,7 @@ O desktop (1440px) é a referência. Abaixo dele:
   - fechar com Esc, X e overlay;
   - quantidade com mínimo 1, dois dígitos e reinício;
 - `Newsletter`: validação, foco no primeiro erro e envio simulado;
-- `Home`: pop-up de entrada com o produto mais caro, que não reabre depois de fechado.
+- `Home`: o modal abre pelo COMPRAR dos cards.
 
 ## Deploy
 

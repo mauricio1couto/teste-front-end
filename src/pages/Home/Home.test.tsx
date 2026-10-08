@@ -29,29 +29,25 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-describe('Home: pop-up de entrada', () => {
-  it('abre sozinho com o produto mais caro e não reabre depois de fechado', async () => {
-    const user = userEvent.setup();
+describe('Home: modal do produto', () => {
+  it('não abre nenhum pop-up ao carregar a página', async () => {
     render(<Home />);
 
-    const dialog = await screen.findByRole('dialog');
-    expect(dialog).toHaveAccessibleName('Destaque');
-    expect(within(dialog).getByText('R$ 1.499,90')).toBeInTheDocument();
-
-    await user.keyboard('{Escape}');
+    await screen.findAllByRole('button', { name: 'Comprar Barato' });
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  it('continua abrindo pelo COMPRAR dos cards', async () => {
+  it('abre pelo COMPRAR dos cards', async () => {
     const user = userEvent.setup();
     render(<Home />);
 
-    await user.click(await screen.findByRole('button', { name: 'Fechar detalhes do produto' }));
     // as 3 vitrines mostram os mesmos produtos; usa o card da primeira
-    const buy = screen.getAllByRole('button', { name: 'Comprar Barato' })[0];
+    const [buy] = await screen.findAllByRole('button', { name: 'Comprar Destaque' });
     if (!buy) throw new Error('Botão COMPRAR não encontrado');
     await user.click(buy);
 
-    expect(screen.getByRole('dialog')).toHaveAccessibleName('Barato');
+    const dialog = screen.getByRole('dialog');
+    expect(dialog).toHaveAccessibleName('Destaque');
+    expect(within(dialog).getByText('R$ 1.499,90')).toBeInTheDocument();
   });
 });
