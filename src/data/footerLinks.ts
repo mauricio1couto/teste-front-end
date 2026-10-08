@@ -42,7 +42,19 @@ export interface SocialLink {
 }
 
 export const socialLinks: SocialLink[] = [
-  { label: 'Instagram da Econverse', href: 'https://www.instagram.com/', icon: instagramIcon },
-  { label: 'Facebook da Econverse', href: 'https://www.facebook.com/', icon: facebookIcon },
-  { label: 'LinkedIn da Econverse', href: 'https://www.linkedin.com/', icon: linkedinIcon },
+  {
+    label: 'Instagram da Econverse',
+    href: 'https://www.instagram.com/econverse.ag',
+    icon: instagramIcon,
+  },
+  {
+    label: 'Facebook da Econverse',
+    href: 'https://www.facebook.com/share/1C5w5zNiGB/',
+    icon: facebookIcon,
+  },
+  {
+    label: 'LinkedIn da Econverse',
+    href: 'https://www.linkedin.com/company/econverse/',
+    icon: linkedinIcon,
+  },
 ];
