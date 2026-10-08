@@ -12,16 +12,27 @@ Implementação da Home da loja **econverse** em **React 18 + TypeScript (strict
 
 ## Como rodar
 
-Requisitos: Node 20+ e npm.
+Requisito: [Node.js](https://nodejs.org) 20+ (versão LTS).
+
+Escolha uma das formas abaixo. Nas três, o navegador abre sozinho em `http://localhost:5173` (ou na próxima porta livre). Para encerrar, feche a janela ou o terminal, ou aperte `Ctrl + C`.
+
+**1. Duplo clique (Windows):** abra o arquivo **`iniciar.bat`** na pasta do projeto. Na primeira vez ele instala as dependências, depois sobe o servidor.
+
+**2. VS Code:** aperte `Ctrl + Shift + B` (ou use o menu **Terminal → Run Build Task…**) e escolha a tarefa **Iniciar projeto**.
+
+**3. Terminal:**
 
 ```bash
 npm install
-npm run dev        #
+npm run dev
 ```
+
+> No **PowerShell**, se aparecer _"running scripts is disabled on this system"_, use `npm.cmd install` e `npm.cmd run dev`. Outra opção é liberar scripts para o seu usuário uma vez com `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`. O `iniciar.bat` e a tarefa do VS Code já evitam esse problema.
 
 | Script            | O que faz                                         |
 | ----------------- | ------------------------------------------------- |
 | `npm run dev`     | Servidor de desenvolvimento (com proxy do JSON)   |
+| `npm start`       | Mesmo que `npm run dev`                           |
 | `npm run build`   | Checagem de tipos (`tsc -b`) + build de produção  |
 | `npm run preview` | Serve o build localmente (também com o proxy)     |
 | `npm run lint`    | ESLint (TypeScript strict, react-hooks, jsx-a11y) |
