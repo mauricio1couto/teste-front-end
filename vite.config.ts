@@ -33,8 +33,9 @@ export default defineConfig(({ mode }) => {
     css: {
       modules: { localsConvention: 'camelCaseOnly' },
     },
-    server: { proxy },
-    preview: { proxy },
+    // `open`: abre o navegador automaticamente ao iniciar o servidor.
+    server: { proxy, open: true },
+    preview: { proxy, open: true },
     test: {
       globals: true,
       environment: 'jsdom',
